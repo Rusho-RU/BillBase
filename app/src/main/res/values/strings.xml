@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BillBase</string>
+    <string name="get_info">GET INFO</string>
+    <string name="update_info">UPDATE INFO</string>
+    <string name="new_entry">NEW ENTRY</string>
+    <string name="rent_fee">Rent Fee</string>
+    <string name="gas_bill">Gas Bill</string>
+    <string name="per_unit_cost">Per Unit Cost</string>
+    <string name="flat_no">Flat No.</string>
+    <string name="submit">Submit</string>
+    <string name="get">Get</string>
+    <string name="select">SELECT</string>
+</resources>

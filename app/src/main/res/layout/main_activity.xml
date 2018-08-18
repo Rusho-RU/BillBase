@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_activity_main_update_info"
+        android:layout_width="385dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/button_activity_main_new_entry"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-186dp"
+        android:onClick="onClickUpdateInfo"
+        android:text="@string/update_info" />
+
+    <Button
+        android:id="@+id/button_activity_main_new_entry"
+        android:layout_width="385dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/button_activity_main_get_info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-243dp"
+        android:onClick="onClickNewEntry"
+        android:text="@string/new_entry" />
+
+    <Button
+        android:id="@+id/button_activity_main_get_info"
+        android:layout_width="385dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="243dp"
+        android:onClick="onClickGetInfo"
+        android:text="@string/get_info" />
+</RelativeLayout>
