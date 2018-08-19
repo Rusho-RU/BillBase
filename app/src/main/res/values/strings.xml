@@ -5,7 +5,7 @@
     <string name="new_entry">NEW ENTRY</string>
     <string name="rent_fee">Rent Fee</string>
     <string name="gas_bill">Gas Bill</string>
-    <string name="per_unit_cost">Per Unit Cost</string>
+    <string name="per_unit_cost">This Month Unit</string>
     <string name="flat_no">Flat No.</string>
     <string name="submit">Submit</string>
     <string name="get">Get</string>
