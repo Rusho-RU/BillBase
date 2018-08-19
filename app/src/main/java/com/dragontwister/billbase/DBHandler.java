@@ -1,15 +1,22 @@
 package com.dragontwister.billbase;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
+import android.os.Bundle;
 
 import java.sql.Statement;
 import java.util.Calendar;
 
 public class DBHandler extends SQLiteOpenHelper {
-    private static final String[] month = new String[] {
+    public static final String[] month = new String[] {
             "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     };
 
@@ -18,7 +25,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String COL_1 = "Flat_no";
     public static final String COL_2 = "Rent_Fee";
     public static final String COL_3 = "Gas_Bill";
-    public static final String COL_4 = "Electricity_Bill";
+    public static final String COL_4 = "Electricity_Unit";
     public static final String COL_5 = "Total_Bill";
 
     public DBHandler(Context context) {
@@ -55,5 +62,11 @@ public class DBHandler extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, values);
 
         return result!=-1;
+    }
+
+    public Cursor getAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor allData = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return allData;
     }
 }

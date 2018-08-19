@@ -10,4 +10,10 @@
     <string name="submit">Submit</string>
     <string name="get">Get</string>
     <string name="select">SELECT</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="reset">RESET</string>
+    <string name="get_individual_flat_info">GET INDIVIDUAL FLAT INFO</string>
+    <string name="get_info_of_all_flat">GET INFO OF ALL FLAT</string>
 </resources>
