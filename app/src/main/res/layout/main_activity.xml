@@ -17,9 +17,9 @@
         android:id="@+id/button_activity_main_new_entry"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_above="@+id/button_activity_main_get_info"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-243dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="111dp"
         android:onClick="onClickNewEntry"
         android:text="@string/new_entry" />
 
@@ -27,9 +27,8 @@
         android:id="@+id/button_activity_main_get_info"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="243dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button_activity_main_new_entry"
         android:onClick="onClickGetInfo"
         android:text="@string/get_info" />
 
@@ -50,4 +49,13 @@
         android:layout_centerHorizontal="true"
         android:onClick="onClickGasBill"
         android:text="GAS BILL" />
+
+    <Button
+        android:id="@+id/button_mainActivity_deleteInfo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/button_mainActivity_gasBill"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickDeletInfo"
+        android:text="DELETE INFO" />
 </RelativeLayout>

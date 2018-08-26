@@ -43,18 +43,15 @@ public class GetInfo extends AppCompatActivity {
                             showMessage("ERROR!", "No Data Found For Flat " + flatNo);
                         else {
                             cursor.moveToFirst();
-                            String flat_no = cursor.getString(0);
-                            String rent_fee = cursor.getString(1);
-                            String gas_bill = cursor.getString(2);
-                            String electricity_unit = cursor.getString(3);
-                            String total_bill = cursor.getString(4);
+                            String rentFee = cursor.getString(1);
+                            String eUnit = cursor.getString(2);
+                            String total = cursor.getString(3);
 
                             String flat_info = (
-                                    "Flat No              : " + flat_no + "\n") +
-                                    "Rent Fee           : " + rent_fee + "\n" +
-                                    "Gas Bill             : " + gas_bill + "\n" +
-                                    "Electricity Unit : " + electricity_unit + "\n" +
-                                    "Total Bill            : " + total_bill + "\n\n";
+                                    "Flat No       : " + flatNo + "\n") +
+                                    "Rent Fee      : " + rentFee + "\n" +
+                                    "Meter Reading : " + eUnit + "\n" +
+                                    "Total Bill    : " + total + "\n\n";
 
                             showMessage("Current Month Info for Flat " + flatNo, flat_info);
                             cursor.close();
@@ -67,22 +64,23 @@ public class GetInfo extends AppCompatActivity {
     }
 
     public void onClickGetAll(View view){
-        Cursor allData = dbHandler.getAllData();
+        Cursor cursor = dbHandler.getAllData();
 
-        if(allData.getCount() == 0){
+        if(cursor.getCount() == 0){
             showMessage("ERROR Occured!", "NO DATA FOUND FOR THIS MONTH");
             return;
         }
 
         StringBuilder buffer = new StringBuilder();
 
-        while(allData.moveToNext()){
-            buffer.append("Flat No              : " + allData.getString(0) + "\n");
-            buffer.append("Rent Fee           : " + allData.getString(1) + "\n");
-            buffer.append("Gas Bill             : " + allData.getString(2) + "\n");
-            buffer.append("Electricity Unit : " + allData.getString(3) + "\n");
-            buffer.append("Total Bill           : " + allData.getString(4) + "\n\n");
+        while(cursor.moveToNext()){
+            buffer.append("Flat No       : " + cursor.getString(0) + "\n");
+            buffer.append("Rent Fee      : " + cursor.getString(1) + "\n");
+            buffer.append("Meter Reading : " + cursor.getString(2) + "\n");
+            buffer.append("Total Bill    : " + cursor.getString(3) + "\n\n");
         }
+
+        cursor.close();
 
         showMessage("All flat info for " + DBHandler.month[Calendar.getInstance().get(Calendar.MONTH)], buffer.toString());
     }
@@ -92,6 +90,7 @@ public class GetInfo extends AppCompatActivity {
                 .setCancelable(true)
                 .setTitle(title)
                 .setMessage(message)
+                .setPositiveButton("OK", null)
                 .show();
     }
 }

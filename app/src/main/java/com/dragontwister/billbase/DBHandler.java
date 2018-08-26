@@ -1,14 +1,10 @@
 package com.dragontwister.billbase;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.IntegerRes;
-
-import java.sql.Statement;
 import java.util.Calendar;
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -20,9 +16,8 @@ public class DBHandler extends SQLiteOpenHelper {
     public static String TABLE_NAME = month[Calendar.getInstance().get(Calendar.MONTH)];
     public static final String COL_1 = "Flat_No";
     public static final String COL_2 = "Rent_Fee";
-    public static final String COL_3 = "Gas_Bill";
-    public static final String COL_4 = "Electricity_Unit";
-    public static final String COL_5 = "Total_Bill";
+    public static final String COL_3 = "Electricity_Unit";
+    public static final String COL_4 = "Total_Bill";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -34,8 +29,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 COL_1 + " INTEGER PRIMARY KEY NOT NULL, " +
                 COL_2 + " INTEGER NOT NULL, " +
                 COL_3 + " INTEGER NOT NULL, " +
-                COL_4 + " INTEGER NOT NULL, " +
-                COL_5 + " INTEGER NOT NULL" + ")"
+                COL_4 + " INTEGER NOT NULL" + ")"
         );
     }
 
@@ -45,26 +39,17 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public int insertData(Integer _flatNo, Integer _rentFee, Integer _gasBill, Integer _eUnit){
+    public int insertData(Integer flatNo, Integer rentFee, Integer eUnit, Integer total){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        String total, flatNo, rentFee, gasBill, eUnit;
-
-        total = Integer.toString(_rentFee+_gasBill+_eUnit);
-        flatNo = _flatNo.toString();
-        rentFee = _rentFee.toString();
-        gasBill = _gasBill.toString();
-        eUnit = _eUnit.toString();
-
-        if(getDataByQuery(flatNo) != null)
+        if(getDataByQuery(flatNo.toString()).getCount() > 0)
             return 1;
 
         values.put(COL_1, flatNo);
         values.put(COL_2, rentFee);
-        values.put(COL_3, gasBill);
-        values.put(COL_4, eUnit);
-        values.put(COL_5, total);
+        values.put(COL_3, eUnit);
+        values.put(COL_4, total);
 
         long result = db.insert(TABLE_NAME, null, values);
 
@@ -79,19 +64,28 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public Cursor getDataByQuery(String flatNo){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT FLat_No, Rent_Fee, Gas_Bill, Electricity_Unit, Total_Bill FROM " + TABLE_NAME +
+        Cursor cursor = db.rawQuery("SELECT Flat_No, Rent_Fee, Electricity_Unit, Total_Bill FROM " + TABLE_NAME +
                 " WHERE Flat_No = ?", new String[] { flatNo });
         return cursor;
     }
 
-    public void updateData(String _flatNo, String _rentFee, String _gasBill, String _eUnit){
+    public void updateData(Integer flatNo, Integer rentFee, Integer eUnit, Integer total){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_1, _flatNo);
-        values.put(COL_2, _rentFee);
-        values.put(COL_3, _gasBill);
-        values.put(COL_4, _eUnit);
+        values.put(COL_2, rentFee);
+        values.put(COL_3, eUnit);
+        values.put(COL_4, total);
 
-        db.update(TABLE_NAME, values, "Flat_No = ?", new String[] { _flatNo });
+        db.update(TABLE_NAME, values, "Flat_No = ?", new String[] { flatNo.toString() });
+    }
+
+    public void deleteData(String flatNo){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, "Flat_No=?", new String[]{ flatNo });
+    }
+
+    public void deleteAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, "1=1", null);
     }
 }

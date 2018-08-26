@@ -27,25 +27,14 @@
         android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/editText_newEntry_gasBill"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="188dp"
-        android:ems="10"
-        android:hint="@string/gas_bill"
-        android:inputType="numberDecimal" />
-
-    <EditText
         android:id="@+id/editText_newEntry_perUnitCost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="255dp"
+        android:layout_marginTop="190dp"
         android:ems="10"
-        android:hint="@string/perUnitCost"
+        android:hint="Meter Reading"
         android:inputType="numberDecimal" />
 
     <Button
@@ -54,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_new_entry_submit"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-134dp"
+        android:layout_marginTop="-210dp"
         android:onClick="onClickReset"
         android:text="@string/reset" />
 
@@ -64,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="134dp"
+        android:layout_marginBottom="210dp"
         android:onClick="onClickSubmit"
         android:text="@string/submit" />
 

@@ -38,4 +38,9 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(this, GasBill.class);
         startActivity(intent);
     }
+
+    public void onClickDeletInfo(View view){
+        intent = new Intent(this, DeleteInfo.class);
+        startActivity(intent);
+    }
 }
