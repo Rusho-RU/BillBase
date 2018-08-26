@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText_updateConfirm_rentFee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:ems="10"
+        android:hint="Rent Fee"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editText_updateConfirm_gasBill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_updateConfirm_rentFee"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Gas Bill"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editText_updateConfirm_eUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_updateConfirm_gasBill"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Meter Reading"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="228dp"
+        android:onClick="onClickUpdate"
+        android:text="UPDATE" />
+</RelativeLayout>

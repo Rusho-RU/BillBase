@@ -28,4 +28,14 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(this, UpdateInfo.class);
         startActivity(intent);
     }
+
+    public void onClickPerUnitCost(View view){
+        intent = new Intent(this, PerUnitCost.class);
+        startActivity(intent);
+    }
+
+    public void onClickGasBill(View view){
+        intent = new Intent(this, GasBill.class);
+        startActivity(intent);
+    }
 }

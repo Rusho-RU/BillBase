@@ -20,6 +20,9 @@
         <activity android:name=".NewEntry" />
         <activity android:name=".GetInfo"/>
         <activity android:name=".UpdateInfo"/>
+        <activity android:name=".UpdateInfoConfirm"/>
+        <activity android:name=".PerUnitCost"/>
+        <activity android:name=".GasBill"/>
     </application>
 
 </manifest>

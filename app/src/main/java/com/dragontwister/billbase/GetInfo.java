@@ -27,16 +27,39 @@ public class GetInfo extends AppCompatActivity {
     public void onClickIndividual(View view){
         final EditText editText = new EditText(this);
         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        editText.setHint("Flat No.");
 
         new AlertDialog.Builder(this)
                 .setCancelable(true)
-                .setTitle("Insert Flat Number")
                 .setView(editText)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Integer flatNo = Integer.parseInt(editText.getText().toString());
-                        Toast.makeText(GetInfo.this, editText.getText().toString(), Toast.LENGTH_LONG).show();
+                        String flatNo = editText.getText().toString();
+
+                        Cursor cursor = dbHandler.getDataByQuery(flatNo);
+
+                        if (cursor.getCount() == 0)
+                            showMessage("ERROR!", "No Data Found For Flat " + flatNo);
+                        else {
+                            cursor.moveToFirst();
+                            String flat_no = cursor.getString(0);
+                            String rent_fee = cursor.getString(1);
+                            String gas_bill = cursor.getString(2);
+                            String electricity_unit = cursor.getString(3);
+                            String total_bill = cursor.getString(4);
+
+                            String flat_info = (
+                                    "Flat No              : " + flat_no + "\n") +
+                                    "Rent Fee           : " + rent_fee + "\n" +
+                                    "Gas Bill             : " + gas_bill + "\n" +
+                                    "Electricity Unit : " + electricity_unit + "\n" +
+                                    "Total Bill            : " + total_bill + "\n\n";
+
+                            showMessage("Current Month Info for Flat " + flatNo, flat_info);
+                            cursor.close();
+
+                        }
                     }
                 })
                 .create()

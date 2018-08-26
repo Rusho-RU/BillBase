@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/button_get_info_get_individual"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="198dp"
@@ -17,7 +17,7 @@
     <Button
         android:id="@+id/button_get_info_get_all"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/button_get_info_get_individual"
         android:layout_centerHorizontal="true"
         android:onClick="onClickGetAll"
